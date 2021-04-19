@@ -15,14 +15,14 @@
   </header>
 <main>
 <h1 id="handling-duplicate-samaccountnames-and-distinguishednames-for-user-objects-in-active-directory">Handling duplicate SamAccountNames and DistinguishedNames for user objects in Active Directory</h1>
-<p>by William Cimini Published on 4/9/2021</p>
+<p>by William Cimini</p>
 <h2 id="cause">Cause</h2>
 <p>An Active Directory logon object requires a unique SamAccountName and DistinguishedName. An employed individual will have an Active Directory logon based upon their real or preferred name. After enough time passes, it is likely that an organization will hire a person with the same name or similar enough name to one already present in the organization. The likelihood of this occurring increases depending on the organization’s hire rate and organization size. A duplicate name can occur for either the SamAccountName or DistinguishedName if two people with same or similar names exist in the organization.</p>
 <p>This can create a fair amount of clerical work and manual intervention in larger organizations where users are often bulk imported or imported from another system. Even if the organization you currently work for is not large, having a standard procedure and script can reduce burden and improve consistency.</p>
 <h2 id="solution">Solution</h2>
 <p>Defining a written policy for SamAccountNames and DistinguishedNames in your Active Directory account creation procedure can alleviate this problem. Alongside a written policy, a script automatically implementing said policy completes the solution. Scripts created for such issues can also be reused for similar problems, such as renaming an Active Directory user or moving a user to a different organizational unit.</p>
 <h2 id="written-policy">Written policy</h2>
-<p>A quick and hypothetical policy is as follows:</p>
+<p>A quick and hypothetical policy follows:</p>
 <h3 id="samaccountname">SamAccountName</h3>
 <p>SamAccountName’s shall be composed of the user’s first initial and complete last name, ex:</p>
 <p><code>WCimini</code></p>
@@ -48,7 +48,7 @@ WCimini4</code></pre>
 <pre><code>CN=William Cimini 2
 CN=William Cimini 3
 CN=William Cimini 4</code></pre>
-<h2 id="script">Script</h2>
+<h2 id="script">Implementation</h2>
 <p>The functions in the following script will implement the above written procedure automatically. They will generate a list of possible names and return the one that is available in Active Directory. This can be used manually or further developed upon in other scripts.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> Get<span class="op">-</span>ValidSamAccountName <span class="op">{</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">param</span><span class="op">(</span></span>
@@ -165,10 +165,11 @@ UserPrincipalName :
 
 </code></pre>
 <h2 id="additional-things-to-note">Additional things to note</h2>
-<p>In a full implementation additional code is required to check if both <code>$ValidContainerName</code> and <code>$ValidSamAccountName</code> are not empty before making the Active Directory user. The next article will contain a full implementation.</p>
+<p>In a full implementation additional code is required to check if both <code>$ValidContainerName</code> and <code>$ValidSamAccountName</code> are not empty before making the Active Directory user. <a href="generating-random-users-active-directory.html">The next article will contain the first steps to a full implementation.</a></p>
 <p>Performance is an unlikely concern for this script, however the following optimizations can be made:</p>
 <p>Currently a complete list of possible names are generated even if they may not be needed. It is possible to generate a list of functions that generate each name and are only executed when needed.</p>
 <p>Using the <code>+=</code> and <code>+</code> operators to build lists in PowerShell is not performant and typically less readable. Assigning <code>for</code> loops to <code>$variables</code>, forgoing <code>$variables</code> all together, and/or using sub-expressions <code>()</code> <code>$()</code> and list item separators <code>,</code> will give better performance.</p>
-<p>The displayed approach was chosen as it is the most common way to write PowerShell scripts. This possibly stems from knowledge of other programming languages where such performance concerns do not apply.</p>
+<p>The displayed approach was chosen as it is the most common way to write PowerShell scripts. This possibly stems from knowledge of other programming languages where such concerns do not apply.</p>
+</main>
 </body>
 </html>

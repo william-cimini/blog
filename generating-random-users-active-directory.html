@@ -15,6 +15,7 @@
   </header>
 <main>
 <h1 id="generating-random-users-for-an-active-directory-lab">Generating random users for an Active Directory lab</h1>
+<p>by William Cimini</p>
 <h2 id="cause">Cause</h2>
 <p>There is not much point to an Active Directory lab without a realistic set of users and processes.</p>
 <p>Key tasks for an Active Directory lab could include the following:</p>
@@ -113,7 +114,7 @@
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>Mr    Eli      Robinson</span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>Mr    Lindomar Trouw</span></code></pre></div>
 <h2 id="one-thing-to-note">One thing to note</h2>
-<p>The API can be adapted for Active Directory account creation. It is common for the API generate the same user however. Using the <a href=".\duplicate-samaccountnames-and-distinguishednames.html">duplicate SamAccountName and DistinguishedName functions from the last article</a> the errors can be avoided.</p>
+<p>The API can be adapted for Active Directory account creation. It is common for the API generate the same user however. Using the <a href=".\generating-samaccountnames-and-distinguishednames.html">duplicate SamAccountName and DistinguishedName functions from the last article</a> the errors can be avoided.</p>
 <h2 id="implementation">Implementation</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> Import<span class="op">-</span>RandomUserToAD <span class="op">{</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">param</span><span class="op">(</span></span>
@@ -171,5 +172,6 @@ Created user Angelina Fonnes.   ValidSamAccountName: AFonnes    | ValidContainer
 <figure>
 <img src=".\attachments\Untitled.png" title="Sample" alt="Sample user" /><figcaption aria-hidden="true">Sample user</figcaption>
 </figure>
+</main>
 </body>
 </html>
