@@ -18,10 +18,12 @@
 <p>by William Cimini</p>
 <h2 id="cause">Cause</h2>
 <p>A good task for an Active Directory lab would be setting up a script to bulk import users.</p>
-<p>It would be nice if the user properties reflected a real person to match a real scenario.</p>
+<p>As a bonus, it would be nice if the user properties loosely reflected real poeple</p>
 </ul>
 <h2 id="solution">Solution</h2>
 <p><a href="https://randomuser.me/">https://randomuser.me/</a> offers a random user generation API which is interactable with PowerShell.</p>
+<p>The service randomly generates users with realistic names, location information, and other properties</p>
+  <p>This makes it a good match to test a bulk user import script</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PS</span> C<span class="op">:</span>\Users\williamc<span class="op">&gt;</span> <span class="fu">Invoke-RestMethod</span> <span class="st">&quot;https://randomuser.me/api/&quot;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>results</span>
